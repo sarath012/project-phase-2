@@ -1,0 +1,20 @@
+.product-parent-container{
+    display: flex;
+    background-color: rgb(181, 205, 233);
+    /* overflow: hidden; */
+    width: 100%;
+}
+
+
+.productcontainer{
+    width: 85%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    /* margin-left: 15%; */
+    /* background-color: rgb(181, 205, 233); */
+    margin-top: 10vh;
+    height: auto;
+}
+

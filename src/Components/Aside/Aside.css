@@ -1,0 +1,9 @@
+.asidebar{
+    width: 15%;
+    /* min-width: 150px; */
+    height: 90vh;
+    margin-top: 10vh;
+    /* overflow: hidden; */
+    /* position: fixed; */
+    background-color: white;
+}
