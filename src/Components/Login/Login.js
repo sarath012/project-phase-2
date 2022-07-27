@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./Login.css";
 import { appContext } from "../../Context/AppContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const initialValue = { email: "", password: "" };
@@ -8,6 +9,8 @@ export default function Login() {
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
   const { isLoggedIn, setIsLoggedIn } = useContext(appContext);
+
+  const navigate = useNavigate();
 
   const handlechange = (e) => {
     const { name, value } = e.target;
@@ -46,7 +49,8 @@ export default function Login() {
     } else if (!regexpass.test(values.password)) {
       errors.password = "Password not in valid format!";
     } else {
-      setIsLoggedIn(true);
+      // setIsLoggedIn(true);
+      navigate('/products')
     }
 
     return errors;

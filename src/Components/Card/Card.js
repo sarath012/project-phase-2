@@ -1,8 +1,11 @@
 import React, { useContext, useState } from 'react';
 import './Card.css';
 import { appContext } from '../../Context/AppContext';
+import { useNavigate } from 'react-router-dom';
 
 export default function Card({product}) {
+const navigate = useNavigate()
+
     const {selectedProduct, setSelectedProduct} = useContext(appContext)
 
     // console.log(product)

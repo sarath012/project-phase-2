@@ -2,8 +2,12 @@ import React,{useContext} from 'react'
 import { appContext } from '../../Context/AppContext';
 import './Product.css';
 import Imagecarousel from './Imagecarousel/Imagecarousel';
+import { useParams } from 'react-router-dom';
+import data from '../../Object/products.json'
 
 export default function Product() {
+
+    
     const {selectedProduct, setSelectedProduct} = useContext(appContext);
     // console.log(selectedProduct)
     // comment

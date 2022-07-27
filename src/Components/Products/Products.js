@@ -16,7 +16,7 @@ export default function Products() {
     // setSortArray,
     titleFilter,
     // setTitleFilter
-    filter
+    filter,
   } = useContext(appContext);
 
   const compare = (a, b) => {
@@ -43,9 +43,17 @@ export default function Products() {
           .filter((product) =>
             product.title.toLowerCase().includes(titleFilter)
           )
-          .filter((product) => filter.brand.length>0 ? filter.brand.includes(product.brand) : product)
-          .filter((product) => filter.category.length>0 ? filter.category.includes(product.category) : product)
-          .filter((product) => !(filter.stock) ? product.stock===0 : product)
+          .filter((product) =>
+            filter.brand.length > 0
+              ? filter.brand.includes(product.brand)
+              : product
+          )
+          .filter((product) =>
+            filter.category.length > 0
+              ? filter.category.includes(product.category)
+              : product
+          )
+          .filter((product) => (!filter.stock ? product.stock === 0 : product))
           .map((product) => (
             <Card product={product} />
           ))}
