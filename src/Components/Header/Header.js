@@ -12,8 +12,6 @@ export default function Header({ data }) {
     setTitleFilter,
   } = useContext(appContext);
 
-  
-
   // useEffect(() => {
   //   function sortedarray(sortArray) {
   //     const types = {
@@ -48,7 +46,7 @@ export default function Header({ data }) {
 
         <div>
           <select onChange={(e) => setSortArray(e.target.value)}>
-            <option value="none" selected disabled>
+            <option value="none" defaultValue disabled>
               none
             </option>
             <option value="price">Price Ascending</option>
@@ -56,7 +54,7 @@ export default function Header({ data }) {
             <option value="discountPercentage">Discount Percentage</option>
           </select>
         </div>
-        <div></div>
+        <div>Add to cart</div>
       </div>
     </div>
   );

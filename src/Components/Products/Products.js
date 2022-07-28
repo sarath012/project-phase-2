@@ -1,23 +1,55 @@
 import React, { useContext, useState, useEffect } from "react";
-import data from "../../Object/products.json";
+// import data from "../../Object/products.json";
 import Aside from "../Aside/Aside";
 import Card from "../Card/Card";
 import Header from "../Header/Header";
 import "./Products.css";
 import { appContext } from "../../Context/AppContext";
+import axios from "axios";
 import Product from "../Product/Product";
+import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux'
+import { setData } from "../../Store/shopcartSlice";
 
 export default function Products() {
+
+  const selectedProduct = useSelector((state) => state.shopcart.selectedProduct);
+  const sortArray = useSelector((state) => state.shopcart.sortArray);
+  const titleFilter = useSelector((state) => state.shopcart.titleFilter);
+  const filter = useSelector((state) => state.shopcart.filter);
+  const isLoggedIn = useSelector((state) => state.shopcart.isLoggedIn);
+  const data = useSelector((state) => state.shopcart.data);
+
+  const dispatch = useDispatch();
+
   // const [selectProducts, setSelectProducts] = useState({});
-  const {
-    selectedProduct,
-    // setSelectedProduct,
-    sortArray,
-    // setSortArray,
-    titleFilter,
-    // setTitleFilter
-    filter,
-  } = useContext(appContext);
+  // const [data, setData] = useState(null);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if(!isLoggedIn){
+      navigate('/')
+    }
+    else{
+      axios.get("https://dummyjson.com/products")
+      .then((response) => {
+        dispatch(setData(response.data));
+      });
+    }
+  }, []);
+
+  
+
+  
+
+  // const {
+  //   selectedProduct,
+  //   // setSelectedProduct,
+  //   sortArray,
+  //   // setSortArray,
+  //   titleFilter,
+  //   // setTitleFilter
+  //   filter,
+  // } = useContext(appContext);
 
   const compare = (a, b) => {
     if (sortArray === "none") {
@@ -26,10 +58,14 @@ export default function Products() {
     return a[sortArray] - b[sortArray];
   };
 
-  console.log(titleFilter);
 
+
+  if (data===null){
+    return <div>Loading....</div>
+  }
   if (selectedProduct !== null) {
     return <Product />;
+    // navigate();
   }
 
   return (
@@ -38,7 +74,7 @@ export default function Products() {
       <Aside />
 
       <div className="productcontainer">
-        {data.products
+        {data.products.slice()
           .sort(compare)
           .filter((product) =>
             product.title.toLowerCase().includes(titleFilter)
@@ -55,7 +91,7 @@ export default function Products() {
           )
           .filter((product) => (!filter.stock ? product.stock === 0 : product))
           .map((product) => (
-            <Card product={product} />
+            <Card product={product}  />
           ))}
       </div>
     </div>

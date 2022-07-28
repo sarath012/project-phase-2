@@ -4,23 +4,24 @@ import "./App.css";
 import Login from "./Components/Login/Login";
 import Products from "./Components/Products/Products";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { appContext } from "./Context/AppContext";
+// import { appContext } from "./Context/AppContext";
 import Product from "./Components/Product/Product";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState(null);
-  const [sortArray, setSortArray] = useState("");
-  const [titleFilter, setTitleFilter] = useState("");
-  const [filter, setFilter] = useState({
-    brand: [],
-    category: [],
-    stock: true,
-  });
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [selectedProduct, setSelectedProduct] = useState(null);
+  // const [sortArray, setSortArray] = useState("");
+  // const [titleFilter, setTitleFilter] = useState("");
+  // const [filter, setFilter] = useState({
+  //   brand: [],
+  //   category: [],
+  //   stock: true,
+  // });
+  // const [cart,setCart] = useState([]);
 
   return (
     <div className="App">
-      <appContext.Provider
+      {/* <appContext.Provider
         value={{
           isLoggedIn,
           setIsLoggedIn,
@@ -32,8 +33,10 @@ function App() {
           setTitleFilter,
           filter,
           setFilter,
+          cart,
+          setCart
         }}
-      >
+      > */}
         <BrowserRouter>
           <Routes>
 
@@ -43,7 +46,7 @@ function App() {
       
           </Routes>
         </BrowserRouter>
-      </appContext.Provider>
+      {/* </appContext.Provider> */}
 
       {/* </BrowserRouter> */}
     </div>

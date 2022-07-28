@@ -1,14 +1,17 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Login.css";
-import { appContext } from "../../Context/AppContext";
+// import { appContext } from "../../Context/AppContext";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setIsLoggedIn } from "../../Store/shopcartSlice";
 
 export default function Login() {
   const initialValue = { email: "", password: "" };
   const [formValues, setFormValues] = useState(initialValue);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
-  const { isLoggedIn, setIsLoggedIn } = useContext(appContext);
+
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
@@ -49,8 +52,8 @@ export default function Login() {
     } else if (!regexpass.test(values.password)) {
       errors.password = "Password not in valid format!";
     } else {
-      // setIsLoggedIn(true);
-      navigate('/products')
+      dispatch(setIsLoggedIn(true));
+      navigate("/products");
     }
 
     return errors;

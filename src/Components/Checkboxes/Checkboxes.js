@@ -1,12 +1,15 @@
-import React, { useState, useEffect, useContext } from "react";
-// import axios from 'axios';
+import React, { useState, useEffect } from "react";
 import data from "../../Object/products.json";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
-import { appContext } from "../../Context/AppContext";
+import { useSelector, useDispatch } from "react-redux";
+import { setFilter } from "../../Store/shopcartSlice";
 
 export const Checkboxes = ({ filterbasis }) => {
-  const { filter, setFilter } = useContext(appContext);
+
+  const filter = useSelector((state) => state.shopcart.filter);
+
+  const dispatch = useDispatch();
 
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -40,10 +43,9 @@ export const Checkboxes = ({ filterbasis }) => {
     } else {
       filtercopy[filterbasis] = [...filter[filterbasis], e.target.value];
     }
-    setFilter(filtercopy);
+    dispatch(setFilter(filtercopy));
   };
 
-  // console.log(filter);
 
   if (options === null) {
     return <div>Loading...</div>;

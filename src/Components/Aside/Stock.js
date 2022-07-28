@@ -1,15 +1,17 @@
 import React,{useState, useEffect, useContext} from 'react';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
-import { appContext } from "../../Context/AppContext";
-
+// import { appContext } from "../../Context/AppContext";
+import { useSelector, useDispatch } from "react-redux";
+import { setFilter } from "../../Store/shopcartSlice";
 
 export const Stock = () => {
 
-    const {
-        filter, 
-        setFilter
-      } = useContext(appContext);
+  const filter = useSelector((state) => state.shopcart.filter);
+
+  const dispatch = useDispatch();
+
+  
 
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
@@ -52,10 +54,10 @@ export const Stock = () => {
           }}
       >
         <div>
-            <input type="checkbox" name="stock" value={filter.stock} onChange={() => setFilter({...filter, stock: true})} checked={filter.stock}/> In Stock
+            <input type="checkbox" name="stock" value={filter.stock} onChange={() => dispatch(setFilter({...filter, stock: true}))} checked={filter.stock}/> In Stock
         </div>
         <div>
-            <input type="checkbox" name="stock" value={filter.stock} onChange={() => setFilter({...filter, stock: false})} checked={!filter.stock}/> Out of Stock
+            <input type="checkbox" name="stock" value={filter.stock} onChange={() => dispatch(setFilter({...filter, stock: false}))} checked={!filter.stock}/> Out of Stock
         </div>
         
       </Menu>
