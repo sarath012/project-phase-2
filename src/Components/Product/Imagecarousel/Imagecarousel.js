@@ -13,7 +13,7 @@ export default function Imagecarousel({image}) {
                 
                 {image.map((singleimage)=>(
                     <div>
-                        <img src={singleimage}/>
+                        <img alt='productimage' src={singleimage}/>
                     </div>
                     )
                 )}

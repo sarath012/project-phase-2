@@ -1,10 +1,10 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 // import data from "../../Object/products.json";
 import Aside from "../Aside/Aside";
 import Card from "../Card/Card";
 import Header from "../Header/Header";
 import "./Products.css";
-import { appContext } from "../../Context/AppContext";
+
 import axios from "axios";
 import Product from "../Product/Product";
 import { useNavigate } from "react-router-dom";

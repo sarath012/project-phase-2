@@ -1,9 +1,7 @@
-import React, { useContext } from "react";
-import { appContext } from "../../Context/AppContext";
+import React from "react";
 import "./Product.css";
 import Imagecarousel from "./Imagecarousel/Imagecarousel";
-import { useParams } from "react-router-dom";
-// import data from '../../Object/products.json'
+// import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setSelectedProduct, setCart } from "../../Store/shopcartSlice";
 

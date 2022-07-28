@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./Login.css";
-// import { appContext } from "../../Context/AppContext";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setIsLoggedIn } from "../../Store/shopcartSlice";
@@ -29,9 +28,9 @@ export default function Login() {
   useEffect(() => {
     // console.log(formErrors)
     if (Object.keys(formErrors).length === 0 && isSubmit) {
-      console.log(formValues);
+      // console.log(formValues);
     }
-  }, [formErrors]);
+  }, []);
 
   const validate = (values) => {
     const errors = {};
