@@ -4,7 +4,6 @@ export const shopcartSlice = createSlice({
   name: 'shopcart',
   initialState: {
     isLoggedIn : false,
-    selectedProduct : null,
     sortArray : "",
     titleFilter : "",
     filter : {
@@ -18,9 +17,6 @@ export const shopcartSlice = createSlice({
   reducers: {
     setIsLoggedIn: (state, action) => {
       state.isLoggedIn = action.payload
-    },
-    setSelectedProduct: (state, action) => {
-      state.selectedProduct = action.payload
     },
     setSortArray: (state, action) => {
       state.sortArray = action.payload
@@ -41,6 +37,6 @@ export const shopcartSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { setIsLoggedIn,setSelectedProduct,setSortArray,setTitleFilter,setFilter,setCart,setData} = shopcartSlice.actions
+export const { setIsLoggedIn,setSortArray,setTitleFilter,setFilter,setCart,setData} = shopcartSlice.actions
 
 export default shopcartSlice.reducer

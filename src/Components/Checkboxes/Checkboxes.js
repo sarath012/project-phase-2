@@ -81,7 +81,7 @@ export const Checkboxes = ({ filterbasis }) => {
       >
         {options.map((option) => {
           return (
-            <div key={option.id}>
+            <div>
               <input
                 type="checkbox"
                 name={filterbasis}
@@ -99,7 +99,6 @@ export const Checkboxes = ({ filterbasis }) => {
                 <div>
                     <input type="checkbox" name={filterbasis} value={option}/>{option}
                 </div>
-                
             );
         })} */}
     </div>

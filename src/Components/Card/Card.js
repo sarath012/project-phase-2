@@ -1,23 +1,19 @@
-import React, { useContext, useState } from "react";
+import React from "react";
 import "./Card.css";
-// import { appContext } from '../../Context/AppContext';
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { setSelectedProduct } from "../../Store/shopcartSlice";
+
 
 export default function Card({ product }) {
-  // const navigate = useNavigate()
-  const dispatch = useDispatch();
-  // const {selectedProduct, setSelectedProduct} = useContext(appContext)
+
+  const navigate = useNavigate();
 
   return (
     <div
       className="cardcontainer"
-      key={product.id}
-      onClick={() => dispatch(setSelectedProduct(product))}
+      onClick={() => navigate(`/products/${product.id}`)}
     >
       <div>
-        <img className="thumbimg" src={product.thumbnail} />
+        <img className="thumbimg" alt={product.title} src={product.thumbnail} />
       </div>
 
       <div className="titlecontainer">

@@ -1,22 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Product.css";
 import Imagecarousel from "./Imagecarousel/Imagecarousel";
-// import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { setSelectedProduct, setCart } from "../../Store/shopcartSlice";
+import { setCart } from "../../Store/shopcartSlice";
 
 export default function Product() {
-  const selectedProduct = useSelector((state) => state.shopcart.selectedProduct);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  const data = useSelector((state) => state.shopcart.data);
   const cart = useSelector((state) => state.shopcart.cart);
 
   const dispatch = useDispatch();
 
-  // const {selectedProduct, setSelectedProduct,cart,setCart} = useContext(appContext);
+  const navigate = useNavigate();
 
-  // console.log(selectedProduct.id);
+  const { productid } = useParams();
+  // console.log(productid);
+
+  useEffect(() => {
+    let productdata = data.products.find(
+      (product) => product.id === parseInt(productid)
+    );
+    setSelectedProduct(productdata);
+  }, []);
+
   const addToCart = (selectedProduct) => {
     dispatch(setCart([...cart, selectedProduct]));
   };
+
+  if (selectedProduct === null) {
+    return <div>Loading...</div>;
+  }
 
   console.log(cart);
   return (
@@ -24,7 +39,8 @@ export default function Product() {
       <div className="product-button-container">
         <button
           className="product-button"
-          onClick={() => dispatch(setSelectedProduct(null))}
+          // onClick={() => dispatch(setSelectedProduct(null))}
+          onClick={() => navigate("/products")}
         >
           Back to Products page
         </button>

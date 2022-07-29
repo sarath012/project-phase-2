@@ -1,0 +1,33 @@
+.cart-container{
+    width: 100%;
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+.innercontainer{
+    /* border: 1px solid black; */
+    border-radius: 5px;
+    margin-left: 250px;
+    margin-top: 100px;
+    padding: 20px;
+    /* width: 600px; */
+    height: auto;
+
+}
+.cartproduct{
+    width: 600px;
+    height: 200px;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: flex;
+    margin-bottom: 20px;
+}
+.cartimagecontainer{
+    width: 200px;
+    height: 200px;
+}
+.cartimage{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
