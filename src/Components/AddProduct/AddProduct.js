@@ -48,7 +48,7 @@ export const AddProduct = () => {
     }
   };
 
-  console.log(formdata);
+  // console.log(formdata);
 
   return (
     <div>
